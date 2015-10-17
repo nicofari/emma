@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterEmma.master.cs" Inherits="MasterEmma" %>
+
+<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+  Namespace="DevExpress.Web.ASPxSiteMapControl" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v9.3, Version=9.3.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+  Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.v9.3, Version=9.3.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPanel" tagprefix="dx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Emma - questionari clinici</title>
+    <link href="MasterEmma.css" type="text/css" rel="stylesheet" /> 
+    <asp:ContentPlaceHolder id="HeadContent" runat="server">
+      </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+      function ShowGraficoPopup(idMQuest) {
+        popupGrafico.SetContentUrl('FmGrafico.aspx?IdMQuest=' + idMQuest);
+        popupGrafico.Show();
+    }
+    </script>
+</head>
+<body class="oneColLiqCtrHdr">
+    <form id="form1" runat="server">
+        <div id="header">
+        <h3>Emma - il sito per la somministrazione di questionari clinici <br /></h3>
+          <div class="loginstatus">
+              <asp:LoginName ID="LoginName" runat="server" />
+              <asp:LoginStatus ID="LoginStatus" runat="server" 
+                LogoutPageUrl="~/Account/Login.aspx" LogoutAction="RedirectToLoginPage" 
+                onloggedout="LoginStatus_LoggedOut" />
+          </div>
+          <div id="PnlMenu" runat="server">
+              <dx:ASPxSiteMapDataSource ID="smpMain" runat="server" SiteMapProvider="EmmaSitemapProvider" />
+              <dx:ASPxMenu ID="mnuMain" runat="server" Orientation="Horizontal" DataSourceID="smpMain">
+              </dx:ASPxMenu>
+          </div> <!-- end PnlMenu -->
+        </div> <!-- end .header -->
+         <div id="mainContent">
+            <asp:ContentPlaceHolder id="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+         </div> <!-- end .content -->
+         <div id="footer">
+            <p><asp:Label ID="lblUtenteProfilo" runat="server" Text=""></asp:Label></p>
+         </div> <!-- end .footer -->
+    </form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+*.dll
+.svn/
+*.res*
+*.skin*
+*.bak
+app_themes/
+*.licx
+
+
+
+
+
